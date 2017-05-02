@@ -1,0 +1,126 @@
+<html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--       <link rel="stylesheet" href="css/easy-autocomplete.min.css">  -->
+
+    </head>
+<title>Live Train Status - Find train running status</title>
+    <body>
+
+    <div style="background-image: url(img/website-bg.jpg);">
+
+      <!--Import jQuery before materialize.js-->
+<div class="container" style="padding-top: 50px"></div>
+      <div class="row">
+      <div class="col s12 m4"></div>
+      <div class="col s12 m4 center">
+
+          <div class="card-panel">
+          <img src="img/train.png" class="card-circle circle responsive-img">
+          <h3 class="orange-text center bold" style="font-family: 'Roboto', sans-serif;">Live Train Status</h3>
+        <div class="row">
+          <div class="input-field center col s12">
+            <input id="trainnumber" type="text" >
+            <label for="trainnumber" class="blue-text">Train Number / Train Name</label>
+          </div>
+          <div class="row">
+           <div class="input-field col s12">
+<select class="browser-default pulse">
+<label class="grey-text">Choose Date</label>
+    <option value="" disabled selected>Choose your option</option>
+        <option value="2" id="tommorow">Option 2</option>
+    <option value="1" id="today">Option 1</option>
+    <option value="3" id="yesterday">Option 3</option>
+    <option value="4" id="day_before_yesterday">Option 4</option>
+    <option value="5" id="twodays_before_yesterday">Option 5</option>
+    <option value="6" id="threedays_before_yesterday">Option 5</option>
+  </select>
+  </div>
+  </div>
+<a class="waves-effect orange waves-light btn-large pulse" onclick="getResult()">Get Live Status</a>
+
+            </div>
+            </div>
+          </div>
+          </div>
+      </div>
+</div>
+
+<script type="text/javascript">
+//     originalOnload = window.onload;
+// window.onload = function() {
+//   if (originalOnload) {
+//     originalOnload();
+//   }
+//  var options = {
+// url: function(phrase) { 
+// if (phrase !== "") {
+//             return "http://api.railwayapi.com/suggest_train/trains/"+phrase+"/apikey/gcahw26s/";    
+//         }
+// }, 
+// listLocation: "trains",
+
+//   }
+
+// $("#trainnumber").easyAutocomplete(options);
+
+// }
+
+var trainNumber;
+function getResult(){
+  // http://api.railwayapi.com/live/train/<train number>/doj/<yyyymmdd>/apikey/<apikey>/
+
+   if (isNaN(document.getElementById('trainnumber').value) == true) {
+    console.log("Its not a number");
+
+      // http://api.railwayapi.com/name_number/train/<name or number>/apikey/<apikey>/
+
+       var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText);
+
+               var trainNumber = this.getResponseHeader("number");
+               console.log("TrainNumber ="+trainnumber);
+  }
+};
+    xhttp.open("GET", "http://api.railwayapi.com/name_number/train/"+document.getElementById('trainnumber').value+"/apikey/gcahw26s", true);
+        xhttp.send();
+
+
+   }if(isNaN(document.getElementById('trainnumber').value) == false) {
+        console.log("Its a number ");
+
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               console.log(xhttp.responseText.train);
+               var trainNumber = xhttp.responseText.train;
+
+               console.log("TrainNumber ="+JSON.stringify(trainnumber));
+  }
+};
+    xhttp.open("GET", "http://api.railwayapi.com/name_number/train/"+document.getElementById('trainnumber').value+"/apikey/gcahw26s", true);
+        xhttp.send();
+}
+}
+
+
+
+</script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--   <script src="js/jquery.easy-autocomplete.min.js"></script>  -->
+  <script src="js/init.js"></script> 
+    </body>
+  </html>
