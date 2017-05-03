@@ -16,62 +16,44 @@
     <div style="background-image: url(img/website-bg.jpg);">
 
       <!--Import jQuery before materialize.js-->
-<div class="container" style="padding-top: 50px"></div>
-      <div class="row">
+<div class="container" style="padding-top: 50px" ></div>
+      <div class="row" ng-app="LiveTRStApp" ng-controller="MainController">
       <div class="col s12 m4"></div>
       <div class="col s12 m4 center">
 
           <div class="card-panel">
           <img src="img/train.png" class="card-circle circle responsive-img">
           <h3 class="orange-text center bold" style="font-family: 'Roboto', sans-serif;">Live Train Status</h3>
+
         <div class="row">
           <div class="input-field center col s12">
-            <input id="trainnumber" type="text" >
-            <label for="trainnumber" class="blue-text">Train Number / Train Name</label>
+            <input id="trainnumber" ng-model="trainNumber" type="text">
+            <label for="trainnumber" class="blue-text" >Train Number / Train Name</label>
           </div>
           <div class="row">
            <div class="input-field col s12">
-<select class="browser-default pulse">
-<label class="grey-text">Choose Date</label>
+<select class="browser-default" ng-model="options">
+    <label class="grey-text">Choose Date</label>
     <option value="" disabled selected>Choose your option</option>
         <option value="2" id="tommorow">Option 2</option>
-    <option value="1" id="today">Option 1</option>
-    <option value="3" id="yesterday">Option 3</option>
-    <option value="4" id="day_before_yesterday">Option 4</option>
-    <option value="5" id="twodays_before_yesterday">Option 5</option>
-    <option value="6" id="threedays_before_yesterday">Option 5</option>
+        <option value="1" id="today">Option 1</option>
+       <option value="3" id="yesterday">Option 3</option>
+       <option value="4" id="day_before_yesterday">Option 4</option>
+       <option value="5" id="twodays_before_yesterday">Option 5</option>
+      <option value="6" id="threedays_before_yesterday">Option 5</option>
   </select>
   </div>
   </div>
-<a class="waves-effect orange waves-light btn-large pulse" onclick="getResult()">Get Live Status</a>
+<a class="waves-effect orange waves-light btn-large pulse" ng-click="getResult()">Get Live Status</a>
 
             </div>
             </div>
           </div>
           </div>
-      </div>
 </div>
-
+</div>
+</body>
 <script type="text/javascript">
-//     originalOnload = window.onload;
-// window.onload = function() {
-//   if (originalOnload) {
-//     originalOnload();
-//   }
-//  var options = {
-// url: function(phrase) { 
-// if (phrase !== "") {
-//             return "http://api.railwayapi.com/suggest_train/trains/"+phrase+"/apikey/gcahw26s/";    
-//         }
-// }, 
-// listLocation: "trains",
-
-//   }
-
-// $("#trainnumber").easyAutocomplete(options);
-
-// }
-
 var trainNumber;
 function getResult(){
   // http://api.railwayapi.com/live/train/<train number>/doj/<yyyymmdd>/apikey/<apikey>/
@@ -120,6 +102,7 @@ function getResult(){
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="js/AppController.js"></script>
 <!--   <script src="js/jquery.easy-autocomplete.min.js"></script>  -->
   <script src="js/init.js"></script> 
     </body>
