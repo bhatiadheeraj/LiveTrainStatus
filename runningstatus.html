@@ -4,6 +4,13 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,22 +18,48 @@
 
     </head>
 <title>Live Train Status - Find train running status</title>
-    <body>
-
-    <div style="position: absolute; display: inline-block; left: 24px;">
-    	<h5 class="left-align"><a class="waves-effect waves-light btn"><i class="material-icons left">chevron_left</i>Previous Day</a></h5>
-    </div>
-	<div style="position: absolute; display: inline-block; right: 24px;">
-		<h5 class="next"><a class="waves-effect waves-light btn"><i class="material-icons right">chevron_right</i>Next Day</a></h5>
-	</div>
-	<ul class="pager">
-  <li class="previous"><a href="#">Previous</a></li>
+    <body class="grey lighten-4">
+<div class="container" id="container">
+<ul class="pager">
+  <li class="previous" style=" margin-left: 25px"><a href="#">Previous</a></li>
+  <li><a href="#">Today</a></li>
   <li class="next"><a href="#">Next</a></li>
 </ul>
 
 
-<div id="dataTrainLiveStatus">
-</div>
+<div id="dataTrainLiveStatus" class="">
+<!-- Here comes the Heading-->
+	<h3 id="headingStatus" class="center-align">Running Status of NGP JAIPUR EXP (11203) Origin Start Date 04/05/2017</h3>
+<div class="divider"></div>
+	<!-- HEre comes the Table! -->
+		<ul class="collection with-header">
+        	<li class="collection-header orange"><h4 class="white-text center-align">Train has not started yet.</h4></li>
+        </ul>
 
+<table style="margin-top: 25px" class="bordered highlight">
+		<tr>
+ 	          <th data-field>No</th>
+ 	          <th data-field>Station No</th>
+ 	          <th data-field>Sch. Arrival</th>
+ 	          <th data-field>Sch. Departure</th>
+ 	          <th data-field>Actual Arrival</th>
+ 	          <th data-field>Actual Departure</th>
+ 	          <th data-field>Distance</th>
+
+         </tr>
+  <tr ng-repeat="x in names">
+  </tr>
+</table>
+</div>
+</div>
     </body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript" src="js/AppController.js"></script>
+<!--   <script src="js/jquery.easy-autocomplete.min.js"></script>  -->
+  <script src="js/init.js"></script> 
     </html>
