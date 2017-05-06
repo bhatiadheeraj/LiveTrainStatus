@@ -24,7 +24,15 @@
           <div class="card-panel">
           <img src="img/train.png" class="card-circle circle responsive-img">
           <h3 class="orange-text center bold" style="font-family: 'Roboto', sans-serif;">Live Train Status</h3>
-
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
         <div class="row">
           <div class="input-field center col s12">
             <input id="trainnumber" ng-model="trainNumber" type="text">
@@ -54,47 +62,6 @@
 </div>
 </body>
 <script type="text/javascript">
-var trainNumber;
-function getResult(){
-  // http://api.railwayapi.com/live/train/<train number>/doj/<yyyymmdd>/apikey/<apikey>/
-
-   if (isNaN(document.getElementById('trainnumber').value) == true) {
-    console.log("Its not a number");
-
-      // http://api.railwayapi.com/name_number/train/<name or number>/apikey/<apikey>/
-
-       var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-               console.log(xhttp.responseText);
-
-               var trainNumber = this.getResponseHeader("number");
-               console.log("TrainNumber ="+trainnumber);
-  }
-};
-    xhttp.open("GET", "http://api.railwayapi.com/name_number/train/"+document.getElementById('trainnumber').value+"/apikey/gcahw26s", true);
-        xhttp.send();
-
-
-   }if(isNaN(document.getElementById('trainnumber').value) == false) {
-        console.log("Its a number ");
-
-            var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-               console.log(xhttp.responseText.train);
-               var trainNumber = xhttp.responseText.train;
-
-               console.log("TrainNumber ="+JSON.stringify(trainnumber));
-  }
-};
-    xhttp.open("GET", "http://api.railwayapi.com/name_number/train/"+document.getElementById('trainnumber').value+"/apikey/gcahw26s", true);
-        xhttp.send();
-}
-}
-
-
-
 </script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
