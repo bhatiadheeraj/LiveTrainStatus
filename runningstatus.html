@@ -26,17 +26,43 @@
   <li class="next"><a href="#">Next</a></li>
 </ul>
 
+      <div class="row" id="preloaderid">
+      <div class="col s12 m4"></div>
+      <div class="col s12 m4 center">
 
-<div id="dataTrainLiveStatus" class="">
+          <div class="card-panel">
+          
+        <div class="row">
+          <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+          </div>
+          <div class="row">
+        <h3 class="center bold red-text">Loading....</h3>
+
+            </div>
+            </div>
+          </div>
+          </div>
+
+<div id="dataTrainLiveStatus" style="display: none" ng-controller="LiveTRSController" ng-app="LiveTRStApp">
 <!-- Here comes the Heading-->
 	<h3 id="headingStatus" class="center-align">Running Status of NGP JAIPUR EXP (11203) Origin Start Date 04/05/2017</h3>
 <div class="divider"></div>
 	<!-- HEre comes the Table! -->
 		<ul class="collection with-header">
-        	<li class="collection-header orange"><h4 class="white-text center-align">Train has not started yet.</h4></li>
+        	<li class="collection-header orange"><h4 ng-model="runningheading"  class="white-text center-align" id="trainshortstatus">Train has not started yet.</h4></li>
         </ul>
 
-<table style="margin-top: 25px" class="bordered highlight">
+<table class="table">
 		<tr>
  	          <th data-field>No</th>
  	          <th data-field>Station No</th>
@@ -47,11 +73,18 @@
  	          <th data-field>Distance</th>
 
          </tr>
-  <tr ng-repeat="x in names">
+  <tr ng-repeat="x in data.route">
+  <td>{{ x.no }}</td>
+  <td> {{ x.station_.name }}</td>
+  <td> {{ x.scharr }} </td>
+  <td> {{ x.schdep }} </td>
+  <td> {{ x.actarr }} </td>
+  <td> {{ x.actdep }} </td>
+  <td> {{ x.distance }} </td>
   </tr>
 </table>
 </div>
-</div>
+
     </body>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -60,6 +93,4 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script type="text/javascript" src="js/AppController.js"></script>
-<!--   <script src="js/jquery.easy-autocomplete.min.js"></script>  -->
-  <script src="js/init.js"></script> 
     </html>
