@@ -19,20 +19,20 @@
     </head>
 <title>Live Train Status - Find train running status</title>
     <body class="grey lighten-4">
-<div class="container" id="container">
+    <div ng-controller="LiveTRSController" ng-app="LiveTRStApp">
+<div class="container" id="container" >
 <ul class="pager">
-  <li class="previous" style=" margin-left: 25px"><a href="#">Previous</a></li>
-  <li><a href="#">Today</a></li>
-  <li class="next"><a href="#">Next</a></li>
+  <li id="previousday" ng-click="Previous()" class="previous" style=" margin-left: 25px"><a href="#">Previous Day</a></li>
+  <li id="nextday" ng-click="Next()" class="next"><a href="#">Next Day</a></li>
 </ul>
 
-      <div class="row" id="preloaderid">
+      <div id ="box" class="row" >
       <div class="col s12 m4"></div>
       <div class="col s12 m4 center">
 
           <div class="card-panel">
           
-        <div class="row">
+        <div  id="preloaderid" class="row">
           <div class="preloader-wrapper big active">
     <div class="spinner-layer spinner-blue-only">
       <div class="circle-clipper left">
@@ -44,16 +44,19 @@
       </div>
     </div>
   </div>
-          </div>
+
+  </div>
+  <img src ="img/train.png" class="card-circle circle responsive-img" id="errorpic" style="display: none; margin-left: 30% ; margin-right: 30%" >
+          
           <div class="row">
-        <h3 class="center bold red-text">Loading....</h3>
-
+        <h3 id="errorheading" class="center bold red-text">Loading....</h3>
+</div>
             </div>
             </div>
           </div>
           </div>
 
-<div id="dataTrainLiveStatus" style="display: none" ng-controller="LiveTRSController" ng-app="LiveTRStApp">
+<div id="dataTrainLiveStatus" style="display: none">
 <!-- Here comes the Heading-->
 	<h3 id="headingStatus" class="center-align">Running Status of NGP JAIPUR EXP (11203) Origin Start Date 04/05/2017</h3>
 <div class="divider"></div>
@@ -84,7 +87,7 @@
   </tr>
 </table>
 </div>
-
+</div>
     </body>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
